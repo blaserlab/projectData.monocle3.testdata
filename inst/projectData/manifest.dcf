@@ -15,3 +15,11 @@ Objects: cds_bpcells_b
 HelpTopic: cds_bpcells_b
 RecordedClass: cell_data_set
 AdapterPackage: projectData.monocle3
+
+Resource: cds_multiassay
+Loader: projectData.monocle3::cds
+Source: extdata/cds_multiassay
+Objects: cds_multiassay
+HelpTopic: cds_multiassay
+RecordedClass: cell_data_set
+AdapterPackage: projectData.monocle3
