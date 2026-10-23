@@ -1,6 +1,6 @@
 Package: projectData.monocle3.testdata
 Title: Test Data for the projectData Monocle 3 Adapter
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: person("Test", "Author",
     role = c("aut", "cre"),
     email = "test@example.org")
