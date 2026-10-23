@@ -1,0 +1,19 @@
+ManifestVersion: 1
+
+Resource: cds_bpcells_a
+Loader: projectData.monocle3::cds
+Source: extdata/cds_bpcells_a
+Objects: cds_bpcells_a
+AdapterPackage: projectData.monocle3
+AdapterExport: projectData_loaders
+RecordedClass: cell_data_set
+HelpTopic: cds_bpcells_a
+
+Resource: cds_bpcells_b
+Loader: projectData.monocle3::cds
+Source: extdata/cds_bpcells_b
+Objects: cds_bpcells_b
+AdapterPackage: projectData.monocle3
+AdapterExport: projectData_loaders
+RecordedClass: cell_data_set
+HelpTopic: cds_bpcells_b

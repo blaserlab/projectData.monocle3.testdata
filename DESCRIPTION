@@ -1,12 +1,22 @@
 Package: projectData.monocle3.testdata
-Title: What the Package Does (One Line, Title Case)
+Title: Test Data for the projectData Monocle 3 Adapter
 Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-License: MIT + file LICENSE
-Config/roxygen2/version: 8.1.1
+Authors@R: person("Test", "Author",
+    role = c("aut", "cre"),
+    email = "test@example.org")
+Description: Small synthetic datasets for testing
+    disk-backed Monocle 3 integration with projectData.
+License: MIT
 Encoding: UTF-8
+LazyData: true
+Depends:
+    R (>= 4.3)
+Suggests:
+    testthat,
+    projectData,
+    projectData.monocle3,
+    monocle3
+Config/testthat/edition: 3
 Roxygen: list(markdown = TRUE)
 URL: https://github.com/blaserlab/projectData.monocle3.testdata
 BugReports: https://github.com/blaserlab/projectData.monocle3.testdata/issues
