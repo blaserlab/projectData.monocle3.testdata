@@ -1,6 +1,6 @@
 Package: projectData.monocle3.testdata
 Title: Test Fixtures for the 'projectData.monocle3' Adapter
-Version: 0.0.0.9004
+Version: 0.0.0.9005
 Authors@R: 
     person("Brad", "Blaser", , "bradley.blaser@osumc.edu", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0002-3168-5423"))
