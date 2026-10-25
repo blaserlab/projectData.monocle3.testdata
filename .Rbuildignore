@@ -1,3 +1,7 @@
 ^projectData\.monocle3\.testdata\.Rproj$
 ^\.Rproj\.user$
+^\.Rhistory$
 ^LICENSE\.md$
+^library_catalogs$
+^inst/data-raw/git_commands\.R$
+^\.projectData\.monocle3-stage-

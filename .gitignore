@@ -3,7 +3,6 @@
 .Rdata
 .httr-oauth
 .DS_Store
-*.rda
 R/local_configs.R
 R/git_commands.R
 R/regenerated_git_commands.R
@@ -13,4 +12,6 @@ inst/data-raw/regenerated_git_commands.R
 *.pdf
 .RData
 .quarto
-inst/extdata/
+# Fixtures are committed on purpose: the package must install from GitHub/tarball
+# without the Monocle stack. Regenerate with inst/data-raw/generate_testdata.R.
+.projectData.monocle3-stage-*/

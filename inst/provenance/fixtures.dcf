@@ -1,0 +1,12 @@
+Script: inst/data-raw/generate_testdata.R
+Seeds: counts 4817/7251/2963; cds 5120/6034/8396; spliced 3571; altExp
+        1409/9182
+R: 4.5.2
+Platform: x86_64-pc-linux-gnu
+projectData: 0.0.0.9008
+projectData.monocle3: 0.0.0.9007
+monocle3: 1.4.24
+BPCells: 0.3.0
+SingleCellExperiment: 1.30.1
+SummarizedExperiment: 1.38.1
+Matrix: 1.7.3

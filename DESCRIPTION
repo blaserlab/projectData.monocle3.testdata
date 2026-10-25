@@ -1,22 +1,27 @@
 Package: projectData.monocle3.testdata
-Title: Test Data for the projectData Monocle 3 Adapter
-Version: 0.0.0.9003
-Authors@R: person("Test", "Author",
-    role = c("aut", "cre"),
-    email = "test@example.org")
-Description: Small synthetic datasets for testing
-    disk-backed Monocle 3 integration with projectData.
-License: MIT
-Encoding: UTF-8
-LazyData: true
-Depends:
-    R (>= 4.3)
-Suggests:
-    testthat,
-    projectData,
-    projectData.monocle3,
-    monocle3
-Config/testthat/edition: 3
-Roxygen: list(markdown = TRUE)
+Title: Test Fixtures for the 'projectData.monocle3' Adapter
+Version: 0.0.0.9004
+Authors@R: 
+    person("Brad", "Blaser", , "bradley.blaser@osumc.edu", role = c("aut", "cre", "cph"),
+           comment = c(ORCID = "0000-0002-3168-5423"))
+Description: Small, deterministic, synthetic data resources used to test the
+    integration of 'projectData', its 'monocle3' adapter ('projectData.monocle3')
+    and 'BPCells'-backed Monocle 3 'cell_data_set' objects. Three saved
+    cell_data_set directories are registered in a 'projectData' manifest and
+    have lightweight placeholder objects under data/; one ordinary data frame
+    has no manifest entry. Installing the package requires none of those
+    packages.
+License: MIT + file LICENSE
 URL: https://github.com/blaserlab/projectData.monocle3.testdata
 BugReports: https://github.com/blaserlab/projectData.monocle3.testdata/issues
+Depends: R (>= 4.3)
+Suggests: BPCells, monocle3, projectData (>= 0.0.0.9005), projectData.monocle3
+    (>= 0.0.0.9007), SummarizedExperiment, SingleCellExperiment, testthat
+    (>= 3.2.0), withr
+Remotes: github::blaserlab/projectData, github::blaserlab/projectData.monocle3,
+    github::bnprks/BPCells/r, github::cole-trapnell-lab/monocle3
+Config/testthat/edition: 3
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2

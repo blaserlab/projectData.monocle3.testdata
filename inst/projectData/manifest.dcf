@@ -1,10 +1,18 @@
 ManifestVersion: 1
 
-Resource: cds_already_bpcells
+Resource: cds_bpcells_a
 Loader: projectData.monocle3::cds
-Source: extdata/cds_already_bpcells
-Objects: cds_already_bpcells
-HelpTopic: cds_already_bpcells
+Source: extdata/cds_bpcells_a
+Objects: cds_bpcells_a
+HelpTopic: cds_bpcells_a
+RecordedClass: cell_data_set
+AdapterPackage: projectData.monocle3
+
+Resource: cds_bpcells_b
+Loader: projectData.monocle3::cds
+Source: extdata/cds_bpcells_b
+Objects: cds_bpcells_b
+HelpTopic: cds_bpcells_b
 RecordedClass: cell_data_set
 AdapterPackage: projectData.monocle3
 
