@@ -103,7 +103,7 @@ test_that("no development-machine paths are recorded in readable files", {
   opaque <- grepl("\\.rds$|\\.rda$|/(val|index|idxptr)$", files)
   for (f in files[!opaque]) {
     lines <- readLines(f, warn = FALSE)
-    expect_false(any(grepl(abs_path, lines, perl = TRUE)),
+    expect_false(any(grepl(abs_path, lines, perl = TRUE, useBytes = TRUE)),
                  info = paste("absolute path in", sub(fixture_root(), "", f, fixed = TRUE)))
   }
 })
@@ -113,12 +113,32 @@ test_that("absolute paths inside Monocle's native files are informational only",
   # machine that saved the CDS. They cannot be edited out of the native files
   # and the loader never reads them; the fixture must not depend on them, so
   # none of them may point at anything that still exists.
+  #
+  # cds_object.rds holds an S4 cell_data_set, so it is scanned as a decompressed
+  # byte stream: dput()/str() would need the Bioconductor class definitions
+  # (e.g. GenomeInfoDb), which are not available under R CMD check.
+  serialized_paths <- function(f) {
+    con <- gzfile(f, "rb")
+    on.exit(close(con))
+    bytes <- readBin(con, "raw", file.size(f) * 100)
+    printable <- bytes >= as.raw(32) & bytes < as.raw(127)
+    txt <- rawToChar(replace(bytes, !printable, as.raw(10)))
+    m <- gregexpr("/[A-Za-z0-9_.@%+-]+(/[A-Za-z0-9_.@%+-]+)+", txt)
+    unique(regmatches(txt, m)[[1]])
+  }
   for (nm in cds_resources) {
-    for (f in c("file_index.rds", "cds_object.rds")) {
-      txt <- utils::capture.output(dput(readRDS(file.path(fixture_root(), "extdata", nm, f))))
-      m <- regmatches(txt, gregexpr("\"(/[^\"]+)\"", txt))
-      recorded <- unique(gsub("\"", "", unlist(m)))
-      expect_false(any(file.exists(recorded)), info = paste(nm, f))
-    }
+    dir <- file.path(fixture_root(), "extdata", nm)
+
+    # file_index.rds is a plain list: inspect it directly
+    index <- readRDS(file.path(dir, "file_index.rds"))
+    expect_false(file.exists(index$directory), info = nm)
+    expect_false(any(grepl("^(/|[A-Za-z]:)", index$files$file_path)), info = nm)
+    expect_true(all(file.exists(file.path(dir, index$files$file_path))), info = nm)
+
+    recorded <- serialized_paths(file.path(dir, "cds_object.rds"))
+    expect_false(any(file.exists(recorded)), info = nm)
+    # Anything recorded must be a temporary location, never a project path
+    expect_false(any(grepl(fixture_root(), recorded, fixed = TRUE)), info = nm)
+    expect_false(any(grepl("/inst/extdata/", recorded, fixed = TRUE)), info = nm)
   }
 })
